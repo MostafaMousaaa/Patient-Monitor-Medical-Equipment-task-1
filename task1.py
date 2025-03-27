@@ -854,6 +854,9 @@ class ECGMonitor(QMainWindow):
         
         ecg_wave[brady_start:brady_end] = brady_pattern + noise[brady_start:brady_end]
         
+
+
+
         # Generate plethysmogram (SpO2) waveform data
         seconds = 60
         t = np.linspace(0, seconds, int(seconds * self.sampling_rate))
@@ -906,6 +909,9 @@ class ECGMonitor(QMainWindow):
             brady_pleth += pulse + notch
         
         pleth_wave[brady_start:brady_end] = brady_pleth
+        
+
+
         
         # Generate respiration waveform data - slower frequency than cardiac cycles
         resp_wave = np.zeros_like(t)
