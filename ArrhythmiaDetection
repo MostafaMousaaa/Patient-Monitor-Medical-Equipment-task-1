@@ -1,0 +1,46 @@
+import numpy as np
+import scipy.signal as signal
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Load ECG data
+def load_ecg(filename):
+    data =pd.read_csv(filename)
+    time = data.iloc[:, 0].values
+    voltage = data.iloc[:, 1].values
+    return time, voltage
+
+# Detect R-peaks
+def detect_r_peaks(time, voltage, fs=250):
+    peaks, _ = signal.find_peaks(voltage, distance=fs*0.6)
+    return time[peaks], peaks
+
+# Compute R-R intervals and heart rate
+def compute_rr_intervals(r_peaks):
+    rr_intervals = np.diff(r_peaks)
+    heart_rate = 60 / rr_intervals
+    return rr_intervals, heart_rate
+
+# Detect arrhythmias
+def detect_arrhythmias(rr_intervals, heart_rate):
+    results = {
+        'Tachycardia': heart_rate > 100,
+        'Bradycardia': heart_rate < 60,
+        'PVCs': (rr_intervals < 0.8 * np.mean(rr_intervals)) & (np.roll(rr_intervals, -1) > 1.2 * np.mean(rr_intervals))
+    }
+    return results
+
+
+time, voltage = load_ecg('abnormal_ecg.csv')
+r_peaks_time, r_peaks = detect_r_peaks(time, voltage)
+rr_intervals, heart_rate = compute_rr_intervals(np.diff(r_peaks_time))
+arrhythmia_results = detect_arrhythmias(rr_intervals, heart_rate)
+
+for arrhythmia, detected in arrhythmia_results.items():
+    print(f"{arrhythmia}: {np.sum(detected)} occurrences")
+
+
+plt.plot(time, voltage, label='ECG Signal')
+plt.plot(r_peaks_time, voltage[r_peaks], 'ro', label='R-Peaks')
+plt.legend()
+plt.show()
