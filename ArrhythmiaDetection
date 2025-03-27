@@ -31,7 +31,7 @@ def detect_arrhythmias(rr_intervals, heart_rate):
     return results
 
 
-time, voltage = load_ecg('normal_ecg.csv')
+time, voltage = load_ecg('abnormal_ecg.csv')
 r_peaks_time, r_peaks = detect_r_peaks(time, voltage)
 rr_intervals, heart_rate = compute_rr_intervals(np.diff(r_peaks_time))
 arrhythmia_results = detect_arrhythmias(rr_intervals, heart_rate)
