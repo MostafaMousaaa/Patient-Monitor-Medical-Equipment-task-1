@@ -795,6 +795,7 @@ class ECGMonitor(QMainWindow):
             # For demo purposes, generate sample data if no file is selected
             self.generate_sample_data()
     
+    # Each component is created using Gaussian curves with specific amplitudes, positions, and widths to replicate realistic ECG morphology. 
     def generate_sample_data(self):
         # Generate 60 seconds of sample ECG data for demonstration
         seconds = 60
@@ -1019,7 +1020,6 @@ class ECGMonitor(QMainWindow):
         
         self.ecg_data = ecg_wave
         
-        # No need to show message box for automatic data generation
     
     def toggle_monitoring(self):
         if not self.is_monitoring:
