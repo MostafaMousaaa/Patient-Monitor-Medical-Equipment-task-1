@@ -1,78 +1,80 @@
-# Patient Monitoring System
+# 🏥 Patient Monitoring System
 
-![Patient Monitor](screenshots/monitor_preview.png)
+<div align="center">
+  
+![Patient Monitor](screenshots/monitor_screenshot.png)
 
-## Overview
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![PyQt5](https://img.shields.io/badge/PyQt-5-green.svg)](https://pypi.org/project/PyQt5/)
+[![License](https://img.shields.io/badge/License-Academic-yellow.svg)](LICENSE)
 
-This patient monitoring system is a comprehensive medical simulation platform that displays real-time electrocardiogram (ECG) signals along with vital signs. The system includes automatic arrhythmia detection algorithms capable of identifying bradycardia, tachycardia, and atrial fibrillation, with alarm functionality to alert medical staff when abnormal heart rhythms are detected.
+*Professional medical monitoring system with arrhythmia detection*
+</div>
 
-The project contains two implementations:
-- **PyQt Implementation** - A desktop application with professional medical device styling
-- **Dash Implementation** - A web-based interface that can run in any modern browser
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Implementations](#implementations)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Arrhythmia Detection](#arrhythmia-detection)
+- [Demo Data](#demo-data)
 
-## Features
+## 🔍 Overview
+
+This patient monitoring system simulates professional medical equipment that displays real-time ECG signals and vital signs. The system features automatic arrhythmia detection algorithms capable of identifying bradycardia, tachycardia, and atrial fibrillation, with alarm functionality to alert medical staff when abnormal heart rhythms are detected.
+
+## ✨ Features
 
 ### Waveform Displays
-- **ECG Waveform**: High-fidelity electrocardiogram display with multiple lead options
-- **Plethysmogram (SpO₂)**: Oxygen saturation waveform with realistic pulse characteristics
-- **Respiration Waveform**: Visual representation of breathing patterns
+- **ECG Waveform** 💚 - High-fidelity electrocardiogram with R-peak detection
+- **Plethysmogram (SpO₂)** 💙 - Oxygen saturation waveform 
+- **Respiration Waveform** 💛 - Visual representation of breathing patterns
 
 ### Vital Sign Monitoring
-- Heart Rate (HR): Continuous monitoring with normal range 60-100 BPM
-- Blood Pressure (NBP): Systolic/Diastolic representation
-- Oxygen Saturation (SpO₂): Percentage display with normal range 95-100%
-- Respiration Rate (RESP): Breaths per minute with normal range 12-20
-- Temperature (TEMP): Patient temperature with normal range 36.5-37.5°C
+| Parameter | Normal Range | Color |
+|-----------|--------------|-------|
+| Heart Rate (HR) | 60-100 BPM | Green |
+| Blood Pressure (NBP) | 120/80 mmHg | Red |
+| Oxygen Saturation (SpO₂) | 95-100% | Cyan |
+| Respiration Rate (RESP) | 12-20 rpm | Yellow |
+| Temperature (TEMP) | 36.5-37.5°C | Orange |
 
-### Arrhythmia Detection Algorithms
-- **Bradycardia**: Detects heart rates below 60 BPM
-- **Tachycardia**: Identifies heart rates above 100 BPM
-- **Atrial Fibrillation**: Detects irregular heart rhythms characteristic of A-fib
+### Arrhythmia Detection
+- ⚠️ **Bradycardia** - Slow heart rate (<60 BPM)
+- ⚠️ **Tachycardia** - Fast heart rate (>100 BPM)
+- ⚠️ **Atrial Fibrillation** - Irregular heart rhythm
 
-### Clinical Alarms
-- Visual and audible alarms for abnormal conditions
-- Silence capability with automatic reset after 30 seconds
-- Color-coded vital sign displays (green for normal, red for abnormal)
+## 💻 Implementations
 
-### Additional Features
-- **Multiple ECG Lead Views**: Switch between leads I, II, III, and V1
-- **Adjustable Display Speed**: Options for 12.5 mm/s, 25 mm/s, and 50 mm/s
-- **Patient Information Display**: Shows patient ID, name, age, and room number
-- **Data Loading**: Import ECG data from CSV files
-- **Date and Time Display**: Real-time clock display
+The project includes two implementations:
 
-## Technical Implementation
+### PyQt Desktop Application
+- Professional medical device styling based on Philips monitors
+- Real-time waveform rendering with Matplotlib
+- Complete vital sign display with clinical alarms
 
-### PyQt Implementation
-
-The desktop application is built using PyQt5 with Matplotlib for waveform rendering. It follows professional medical device UI standards with a color scheme inspired by Philips patient monitors.
-
-**Key components:**
-- Custom vital sign display widgets
-- Real-time waveform rendering
-- R-peak detection algorithm for heart beat visualization
-- Gradient styling for professional appearance
-- High DPI support for modern displays
-
-### Dash Implementation
-
-The web-based interface uses Plotly Dash to create a responsive application that can be accessed from any device with a web browser. It maintains the same professional appearance as the PyQt version.
-
-**Key components:**
-- Responsive layout that works across different screen sizes
+### Dash Web Interface
+- Responsive design works in any modern browser
 - Interactive waveform displays with Plotly
-- Bootstrap components for consistent styling
-- Web-standard interface elements
-- Flask backend for data processing
+- Accessible from any device
 
-## Installation and Setup
+## 📸 Screenshots
 
-### Prerequisites
-- Python 3.7 or higher
-- Required packages
+<div align="center">
+  <img src="screenshots/monitor_screenshot.png" alt="Main Monitor Interface" width="80%"/>
+  <p><i>Main monitoring interface showing ECG, SpO₂ and respiration waveforms with vital signs</i></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/arrhythmia_alert.png" alt="Arrhythmia Alert" width="60%"/>
+  <p><i>Tachycardia detection with visual alarm</i></p>
+</div>
+
+## 🔧 Installation
 
 ### PyQt Implementation
-
 ```bash
 # Install required packages
 pip install PyQt5 matplotlib numpy pandas
@@ -82,7 +84,6 @@ python task1.py
 ```
 
 ### Dash Implementation
-
 ```bash
 # Install required packages
 pip install dash dash-bootstrap-components plotly pandas numpy flask
@@ -91,41 +92,38 @@ pip install dash dash-bootstrap-components plotly pandas numpy flask
 python dash_monitor.py
 ```
 
-After starting the Dash application, open a web browser and navigate to http://127.0.0.1:8050/
+## 🚀 Usage
 
-## Usage
+1. **Start Monitoring** - Click the "Start" button to begin real-time simulation
+2. **Load ECG Data** - Import custom ECG data from CSV files
+3. **Adjust Display Speed** - Select from 12.5, 25, or 50 mm/s
+4. **Respond to Alarms** - Click "Silence" to temporarily mute alerts
+5. **Reset Display** - Restart monitoring from the beginning
 
-1. **Start Monitoring**: Click the "Start" button to begin real-time monitoring
-2. **Load ECG Data**: Use the "Load ECG" button to import custom ECG data from CSV files
-3. **Adjust Display Speed**: Select from 12.5, 25, or 50 mm/s for the waveform display
-4. **Respond to Alarms**: Click "Silence" when an alarm is triggered to temporarily mute it
-5. **Reset Display**: Use the "Reset" button to restart monitoring from the beginning
+## ❤️ Arrhythmia Detection
 
-## Arrhythmia Detection
+The system uses the following algorithms to detect arrhythmias:
 
-The system uses the following methods to detect arrhythmias:
+- **Bradycardia**: Heart rate < 60 BPM
+- **Tachycardia**: Heart rate > 100 BPM
+- **Atrial Fibrillation**: Combination of heart rate variability and irregular intervals
 
-- **Bradycardia**: Detected when the heart rate falls below 60 BPM
-- **Tachycardia**: Identified when the heart rate exceeds 100 BPM
-- **Atrial Fibrillation**: Detected through a combination of heart rate variability and irregular intervals between beats
+## 📊 Demo Data
 
-## Demo Data
+The simulation includes a 60-second demo with various cardiac events:
 
-The system includes simulated patient data with the following sections:
-- 0-20s: Normal sinus rhythm
-- 20-30s: Tachycardia episode
-- 30-40s: Return to normal rhythm
-- 40-50s: Bradycardia episode
-- 50-60s: Return to normal rhythm
+| Time (s) | Condition | Heart Rate | Description |
+|----------|-----------|------------|-------------|
+| 0-20 | Normal | 70-80 BPM | Baseline normal sinus rhythm |
+| 20-30 | Tachycardia | 115-130 BPM | Fast heart rate episode |
+| 30-40 | Normal | 70-80 BPM | Return to normal rhythm |
+| 40-50 | Bradycardia | 40-55 BPM | Slow heart rate episode |
+| 50-60 | Normal | 70-80 BPM | Return to normal baseline |
 
-## Development
+---
 
-This project was developed as part of the Medical Instrumentation course at SBME. It demonstrates the application of signal processing techniques and medical device interface design principles.
+<div align="center">
+  
+Developed by SBME 26 Team for Medical Instrumentation Course
 
-## License
-
-This project is available for academic and educational purposes.
-
-## Authors
-
-- SBME 26 Team
+</div>
